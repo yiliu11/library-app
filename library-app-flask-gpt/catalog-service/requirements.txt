@@ -1,0 +1,8 @@
+Flask>=2.1
+Flask-SQLAlchemy>=3.0
+psycopg2-binary>=2.9
+PyJWT>=2.6
+marshmallow>=3.18
+python-dotenv>=1.0
+requests>=2.31
+Flask-Migrate>=4.0

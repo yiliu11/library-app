@@ -1,0 +1,15 @@
+{
+  "name": "Library App Dev",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "auth-service",
+  "workspaceFolder": "/app",
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-azuretools.vscode-docker"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "postCreateCommand": "npm install"
+}

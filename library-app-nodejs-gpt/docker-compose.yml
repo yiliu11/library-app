@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  auth-service:
+    build: ./auth-service
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./auth-service:/app
+    env_file:
+      - ./auth-service/.env
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://user:pass@db:5432/librarydb
+
+  book-catalog-service:
+    build: ./book-catalog-service
+    ports:
+      - "3002:3000"
+    volumes:
+      - ./book-catalog-service:/app
+    env_file:
+      - ./book-catalog-service/.env
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://user:pass@db:5432/librarydb
+
+  checkout-renewal-service:
+    build: ./checkout-renewal-service
+    ports:
+      - "3003:3000"
+    volumes:
+      - ./checkout-renewal-service:/app
+    env_file:
+      - ./checkout-renewal-service/.env
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://user:pass@db:5432/librarydb
+
+  db:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: librarydb
